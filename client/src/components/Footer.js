@@ -7,7 +7,7 @@ const Footer = () => {
       <Container>
         <Row>
           <Col className="text-center py-3">
-            Copyright &copy;
+            Made with ❤ by{" "}
             <a
               href="https://github.com/AtharvRedij"
               target="_blank"
