@@ -4,6 +4,7 @@ require("colors");
 require("dotenv").config();
 
 const connectDB = require("./config/db");
+const { notFound, errorHandler } = require("./middlewares/error.js");
 const products = require("./routes/products");
 
 const app = express();
@@ -15,6 +16,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/products", products);
+
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 

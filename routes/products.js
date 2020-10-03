@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const products = await Product.find({});
-  res.json(products);
+  res.send(products);
 });
 
 // @desc    Fetch single product
@@ -19,9 +19,12 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const product = await Product.findById(req.params.id);
 
-  if (!product) return res.status(404).json({ message: "Product not found" });
+  if (!product) {
+    res.status(404);
+    throw new Error("Product not found");
+  }
 
-  res.json(product);
+  res.send(product);
 });
 
 module.exports = router;
