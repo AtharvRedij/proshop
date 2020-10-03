@@ -8,8 +8,7 @@
     "server": "nodemon index.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "data:import": "node seeder",
-    "data:destroy": "node seeder -d"
+    "importData": "node seeder.js"
   },
   "nodemonConfig": {
     "ignore": [

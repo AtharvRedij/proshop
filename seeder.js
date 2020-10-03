@@ -7,9 +7,9 @@ const connectDB = require("./config/db");
 const products = require("./data/products");
 const users = require("./data/users");
 
-const User = require("./model/user");
-const Product = require("./model/product");
-const Order = require("./model/order");
+const User = require("./models/user");
+const Product = require("./models/product");
+const Order = require("./models/order");
 
 connectDB();
 
@@ -37,22 +37,4 @@ const importData = async () => {
   }
 };
 
-const destroyData = async () => {
-  try {
-    await Order.deleteMany();
-    await Product.deleteMany();
-    await User.deleteMany();
-
-    console.log("Data Destroyed!".red.inverse);
-    process.exit();
-  } catch (error) {
-    console.error(`${error}`.red.inverse);
-    process.exit(1);
-  }
-};
-
-if (process.argv[2] === "-d") {
-  destroyData();
-} else {
-  importData();
-}
+importData();
