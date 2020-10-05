@@ -6,8 +6,10 @@ require("dotenv").config();
 const connectDB = require("./config/db");
 const { notFound, errorHandler } = require("./middlewares/error.js");
 const products = require("./routes/products");
+const users = require("./routes/users");
 
 const app = express();
+app.use(express.json());
 
 connectDB();
 
@@ -16,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/products", products);
+app.use("/api/users", users);
 
 app.use(notFound);
 app.use(errorHandler);
