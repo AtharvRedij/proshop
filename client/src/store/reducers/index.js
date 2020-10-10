@@ -1,7 +1,12 @@
 import { combineReducers } from "redux";
 import { productList, productDetails } from "./product";
 import { cart } from "./cart";
-import { userLogin, userRegister } from "./user";
+import {
+  userLogin,
+  userRegister,
+  userDetails,
+  userUpdateProfile,
+} from "./user";
 
 const reducer = combineReducers({
   productList,
@@ -9,6 +14,8 @@ const reducer = combineReducers({
   cart,
   userLogin,
   userRegister,
+  userDetails,
+  userUpdateProfile,
 });
 
 export default reducer;
